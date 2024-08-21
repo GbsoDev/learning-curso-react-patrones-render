@@ -11,21 +11,30 @@ import { EmptyTodos } from '../Todo/EmptyTodos';
 import { TodoContext } from '../TodoContext';
 import { Modal } from '../Modal';
 import { TodoForm } from '../Todo/TodoForm';
+import { TodoHeader } from '../Todo/TodoHeder';
 
 export function AppUi() {
   const {
     todos,
+    totalTodos,
+    completedTodos,
     filteredTodos,
     loading,
     error,
     completeTodo,
     deleteTodo,
-    modalState
+    modalState,
+    searchValue,
+    setSearchValue,
+    setModalState,
+    addTodo
   } = useContext(TodoContext);
   return (
     <>
-      <TodoCounter />
-      <TodoSearch />
+      <TodoHeader>
+        <TodoCounter totalTodos={totalTodos} completedTodos={completedTodos} />
+        <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
+      </TodoHeader>
       <TodoList>
         {loading && <><TodosLoading /><TodosLoading /><TodosLoading /></>}
         {error && <TodosError />}
@@ -40,10 +49,10 @@ export function AppUi() {
           />
         ))}
       </TodoList>
-      <CreateTodoButton />
+      <CreateTodoButton onClick={() => setModalState(state => !state)} />
       {modalState &&
         <Modal>
-          <TodoForm />
+          <TodoForm addTodo={addTodo} setModalState={()=> setModalState(false)} />
         </Modal>
       }
     </>

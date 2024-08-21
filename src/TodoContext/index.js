@@ -31,7 +31,7 @@ function TodoProvider({ children }) {
         saveTodos(updatedTodos);
     }
 
-    const newTodo = (text) => {
+    const addTodo = (text) => {
         const newTodos = [...todos];
         newTodos.push({ text, completed: false });
         saveTodos(newTodos);
@@ -52,7 +52,7 @@ function TodoProvider({ children }) {
                 deleteTodo,
                 modalState,
                 setModalState,
-                newTodo
+                addTodo
             }
         }>
             {children}
