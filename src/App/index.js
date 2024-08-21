@@ -44,7 +44,8 @@ function App() {
         searchText={searchValue}
         onIsEmpty={(message) => <EmptyTodos message={message} />}
         filteredTodos={filteredTodos}
-        render={todo => (
+      >
+          {todo => (
           <TodoItem
             key={todo.text}
             text={todo.text}
@@ -52,7 +53,8 @@ function App() {
             onComplete={() => completeTodo(todo.text)}
             onDelete={() => deleteTodo(todo.text)}
           />
-        )} />
+        )}
+      </TodoList>
       <CreateTodoButton onClick={() => setModalState(state => !state)} />
       {modalState &&
         <Modal>

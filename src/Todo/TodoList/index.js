@@ -1,7 +1,7 @@
 import './TodoList.css';
 
 // export function TodoList(props) 
-export function TodoList({ 
+export function TodoList({
   loading,
   onLoading,
   error,
@@ -10,7 +10,7 @@ export function TodoList({
   onIsEmpty,
   filteredTodos,
   searchText, 
-  render,
+  children,
 }) 
 {
   return (
@@ -20,7 +20,7 @@ export function TodoList({
     {(!loading && !isEmpty) && onIsEmpty('There are no TODOS')}
     {(isEmpty && !filteredTodos.length) && onIsEmpty(`There are not results for ${searchText}`)}
     <ul className="TodoList">
-      {filteredTodos.map(render)}
+      {filteredTodos.map(children)}
     </ul>
     </section>
   );
