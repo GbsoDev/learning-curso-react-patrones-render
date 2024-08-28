@@ -7,7 +7,8 @@ export function useTodo() {
         item: todos,
         saveItem: saveTodos,
         loading,
-        error
+        error,
+        sincronize: sincronuzeTodos,
     } = useLocalStorage('TODOS_V1', []);
     const [modalState, setModalState] = React.useState(false)
 
@@ -49,6 +50,7 @@ export function useTodo() {
             deleteTodo,
             modalState,
             setModalState,
-            addTodo
+            addTodo,
+            sincronuzeTodos,
         });
 }

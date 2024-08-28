@@ -12,6 +12,7 @@ import { Modal } from '../Modal';
 import { TodoForm } from '../Todo/TodoForm';
 import { TodoHeader } from '../Todo/TodoHeder';
 import { useTodo } from './useTodo';
+import { ChangeAlertWithStorageListener } from '../Todo/ChangeAlert';
 
 function App() {
   const {
@@ -27,7 +28,8 @@ function App() {
     searchValue,
     setSearchValue,
     setModalState,
-    addTodo
+    addTodo,
+    sincronuzeTodos,
   } = useTodo();
   return (
     <>
@@ -67,7 +69,8 @@ function App() {
           <TodoForm addTodo={addTodo} setModalState={setModalState} />
         </Modal>
       }
-    </>
+      <ChangeAlertWithStorageListener sincronize={sincronuzeTodos}/>
+      </>
   );
 }
 export default App;
