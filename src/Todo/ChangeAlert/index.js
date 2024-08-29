@@ -1,7 +1,9 @@
 import './ChangeAlert.css'
-import { withStorageListener } from "./withStorageListener";
+import { useStorageListener } from "./useStorageListener";
 
-function ChangeAlert({ show, toggleShow }) {
+export function ChangeAlert({ sincronize }) {
+
+  const { show, toggleShow } = useStorageListener(sincronize);
 
   if (show) {
     return (
@@ -22,7 +24,3 @@ function ChangeAlert({ show, toggleShow }) {
     return null;
   }
 }
-
-const ChangeAlertWithStorageListener = withStorageListener(ChangeAlert);
-
-export { ChangeAlertWithStorageListener };
